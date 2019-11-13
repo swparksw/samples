@@ -33,7 +33,7 @@
 void session_append(Session **s_list, Session *s) {
 	Session *tmp = *s_list;
 	Session *prev = *s_list;
-	Session *new = calloc(sizeof(Session));
+	Session *new = calloc2(sizeof(Session));
 	MALLOC_OK(new);
 	memcpy(new, s, sizeof(Session) - 2*sizeof(char *));
 

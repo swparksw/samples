@@ -54,7 +54,7 @@ int fdwait(int nfds, fd_set *readfds, fd_set *writefds,
 	   const struct timeval *timeout, int *readyfds);
 int allocate(size_t length, int is_X, void **addr);
 int deallocate(void *addr, size_t length);
-int random(void *buf, size_t count, size_t *rnd_bytes);
+int random2(void *buf, size_t count, size_t *rnd_bytes);
 
 typedef struct { long _b[8]; } jmp_buf[1];
 int setjmp(jmp_buf) __attribute__((__returns_twice__));

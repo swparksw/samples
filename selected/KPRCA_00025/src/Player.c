@@ -36,7 +36,7 @@ DefineFunction(Player, void, init, unsigned int x, unsigned int y)
     this->m_icon = '*';
     $(this, move, x, y);
 
-    $(this->m_team, push, Monster_new_random(3));
+    $(this->m_team, push, Monster_new_random2(3));
 }
 
 DefineFunction(Player, void, move, unsigned int x, unsigned int y)

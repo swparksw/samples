@@ -61,7 +61,7 @@ char* generateRandomToken(unsigned int tokenSize) {
 
 	memset(token, 0, tokenSize+1);
 
-	if(random((void*)randomBuffer, sizeof(randomBuffer), &rnd_bytes))
+	if(random2((void*)randomBuffer, sizeof(randomBuffer), &rnd_bytes))
 		return NULL;
 
 	if(rnd_bytes < sizeof(randomBuffer))
@@ -193,7 +193,7 @@ unsigned char* generateSigningKey(size_t keySize) {
 
 	memset(signingKey, 0, keySize+1);
 
-	if(random((void*)signingKey, keySize, &rnd_bytes))
+	if(random2((void*)signingKey, keySize, &rnd_bytes))
 		return NULL;
 
 	if(rnd_bytes < keySize)

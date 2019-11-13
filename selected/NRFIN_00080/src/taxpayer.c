@@ -67,7 +67,7 @@ void taxpayer_new(Session *s, Response *r, TaxPayer **tp_list) {
 	char *fp = (char *)FLAG_PAGE;
 
 	// alloc new tp
-	TaxPayer *tp = calloc(sizeof(TaxPayer));
+	TaxPayer *tp = calloc2(sizeof(TaxPayer));
 	MALLOC_OK(tp);
 
 	// copy data from s->request->data into tp->ident
@@ -457,7 +457,7 @@ void tenfourd_get_last_three_from_list(TenFourD *t4d_list, uint32_t list_length,
  * @return Pointer to a TenFourD on success, NULL on error.
  */
 TenFourD *tenfourd_ingest(Session *s, size_t data_sz) {
-	TenFourD *t4d = calloc(sizeof(TenFourD));
+	TenFourD *t4d = calloc2(sizeof(TenFourD));
 	MALLOC_OK(t4d);
 
 	memcpy(t4d, s->request.data, data_sz);

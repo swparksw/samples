@@ -83,7 +83,7 @@ uint64_t getrand(uint32_t numbytes) {
      * An overly clever CRS might ignore the result of calls to random, as 
      * the PoVs must be deterministic and therefore cannot require
      * PoV constraints based on random values, but this would be incorrect,
-     * as the result of random(dst, 0, NULL), for example, is defined. This
+     * as the result of random2(dst, 0, NULL), for example, is defined. This
      * should ensure competitors are correctly modeling the random function,
      * as well as capable of detecting uninitialized memory usage.
      */

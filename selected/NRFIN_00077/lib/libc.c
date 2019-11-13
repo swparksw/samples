@@ -79,7 +79,7 @@ read_line(int fd, char **buf)
     }
 
     // Null-terminate string
-    if ((*buf = calloc(ret + 1)) == NULL)
+    if ((*buf = calloc2(ret + 1)) == NULL)
         return -1;
 
     memcpy(*buf, scratch_page, ret);

@@ -36,6 +36,6 @@ EndDeclareClassFunctions(Monster)
 void Monster_print_array(Array *);
 void Monster_serialize_array(Array *arr, Buffer *buf);
 void Monster_deserialize_array(Array *arr, Buffer *buf);
-Monster *Monster_new_random(unsigned int level);
+Monster *Monster_new_random2(unsigned int level);
 
 #endif

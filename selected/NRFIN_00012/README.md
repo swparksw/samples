@@ -51,6 +51,6 @@ The vulnerability that directly causes a crash should be trivial to find for mos
 Given the trivial nature of this vulnerability, we anticipate patching to be trivial as well.
 
 However, satisfying the constraints necessary to prove the vulnerability is significantly more difficult.
-Competitors must be able to identify uninitialized memory access in cases when an undersized count value is provided to random(), and craft a request to trigger it.
-This requires correct modeling of the behavior of random(), and will foil naive attempts to ignore branches wholly dependent on server-generated random values.
+Competitors must be able to identify uninitialized memory access in cases when an undersized count value is provided to random2(), and craft a request to trigger it.
+This requires correct modeling of the behavior of random2(), and will foil naive attempts to ignore branches wholly dependent on server-generated random values.
 In addition, they must autonomously reason about fragmentation support and utilize this knowledge to fully control the uninitialized memory.

@@ -36,13 +36,13 @@
 void *malloc(size_t size);
 
 /**
- * A relatively simple calloc implementation.
+ * A relatively simple calloc2 implementation.
  *
  * @param size Number of bytes of space desired
  * @return VA of allocated space, 
  *   or NULL if size is 0 or there is an error allocating more space.
  */
-void *calloc(size_t size);
+void *calloc2(size_t size);
 
 
 /**

@@ -89,7 +89,7 @@ AuditRecord *audit_list = NULL;
  * @return Pointer to AuditRecord
  */
 AuditRecord *get_new_audit_record(void) {
-    AuditRecord *rec = calloc(sizeof(AuditRecord));
+    AuditRecord *rec = calloc2(sizeof(AuditRecord));
     MALLOC_OK(rec);
     return rec;
 }
@@ -200,7 +200,7 @@ int we_have_a_winner(Session *s, Response *r) {
 int recv_cmd_data(Session *s, size_t expected_bytes) {
     if (expected_bytes == s->request.bytes) {
         if (0 < expected_bytes) {
-            s->request.data = calloc(expected_bytes);
+            s->request.data = calloc2(expected_bytes);
             MALLOC_OK(s->request.data);
 
             RECV(s->request.data, expected_bytes);

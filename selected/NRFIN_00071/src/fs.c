@@ -82,7 +82,7 @@ char *ls_dir(char *path) {
     }
 
     len++;
-    dirlist = calloc(len);
+    dirlist = calloc2(len);
 
     if (!dirlist) {
         debug("Failed to allocate dirlist.\n");
@@ -130,7 +130,7 @@ int add_dir(char *path) {
         return 1;
     }
 
-    parent = calloc(strlen(path)+1);
+    parent = calloc2(strlen(path)+1);
 
     if (!parent) {
         debug("Failed to allocate string.\n");
@@ -166,7 +166,7 @@ int add_dir(char *path) {
         dir = root;
     }
 
-    nd = calloc(sizeof(dirtree_t));
+    nd = calloc2(sizeof(dirtree_t));
 
     if (!nd) {
         debug("Failed to allocate directory.\n");
@@ -213,7 +213,7 @@ int rm_dir(char *path) {
         return 7;
     }
 
-    parent = calloc(len+1);
+    parent = calloc2(len+1);
 
     if (!parent) {
         debug("Failed to allocate string.\n");
@@ -320,7 +320,7 @@ int add_file(char *path, char *data) {
     }
 
     if (!list_find_node_with_data(&dir->files, get_file, fn)) {
-        nf  = calloc(sizeof(file_t));
+        nf  = calloc2(sizeof(file_t));
 
         if (!nf) {
             debug("Failed to allocate new file.\n");
@@ -369,7 +369,7 @@ int rm_file(char *path) {
         return 7;
     }
 
-    parent = calloc(len+1);
+    parent = calloc2(len+1);
 
     if (!parent) {
         debug("Failed to allocate string.\n");
@@ -444,7 +444,7 @@ char *readfile(char *path) {
         return NULL;
     }
 
-    parent = calloc(MAX_FILENAME_SIZE);
+    parent = calloc2(MAX_FILENAME_SIZE);
 
     if (!parent) {
         debug("Failed to allocate string.\n");
@@ -500,7 +500,7 @@ void init_fs() {
     if (root)
         _terminate(8);
 
-    root = calloc(sizeof(dirtree_t));
+    root = calloc2(sizeof(dirtree_t));
 
     if (!root)
         _terminate(9);

@@ -145,7 +145,7 @@ void Monster_print_array(Array *arr)
     }
 }
 
-Monster *Monster_new_random(unsigned int level)
+Monster *Monster_new_random2(unsigned int level)
 {
     unsigned int kind_id = $($g->m_random, randint, NUM_BUILTIN_KINDS);
     Monster *m = new(Monster);

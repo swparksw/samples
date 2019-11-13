@@ -128,7 +128,7 @@ void free(void *ptr);
  * @param size The size of the chunk to allocate
  * @return A pointer to the new chunk, or NULL if allocation failed
  */
-void *calloc(size_t size);
+void *calloc2(size_t size);
 
 /**
  * Resize a chunk of memory allocated with malloc().

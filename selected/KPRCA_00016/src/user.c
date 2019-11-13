@@ -31,7 +31,7 @@ int add_user(user_list_t *list, user_t *user)
   {
     user_t *u;
     int auth_code;
-    random(&auth_code, sizeof(auth_code), NULL);
+    random2(&auth_code, sizeof(auth_code), NULL);
 
     if (*list == NULL)
     {
@@ -41,6 +41,8 @@ int add_user(user_list_t *list, user_t *user)
     else
     {
       for (u = *list; u->next != NULL; u = u->next);
+      if (u->user_id == MAX_NUM_USERS)
+        return -1;
       user->user_id = u->user_id + 1;
       u->next = user;
     }
@@ -76,6 +78,23 @@ user_t* find_user_by_id(user_list_t list, unsigned short user_id)
     for (user_t *u = list; u != NULL; u = u->next)
     {
       if (user_id == u->user_id)
+      {
+        ret = u;
+        break;
+      }
+    }
+  }
+  return ret;
+}
+
+user_t* get_user(user_list_t list, unsigned short user_id, unsigned int auth_code)
+{
+  user_t *ret = NULL;
+  if (list)
+  {
+    for (user_t *u = list; u != NULL; u = u->next)
+    {
+      if (user_id == u->user_id && auth_code == u->auth_code)
       {
         ret = u;
         break;

@@ -181,7 +181,7 @@ static size_t esendall(int fd, char *buf, size_t s) {
  * @return Response data, NULL on allocation error
  */
 resp_t *do_mkdir(msg_t *msg) {
-    resp_t *resp = calloc(sizeof(resp_t));
+    resp_t *resp = calloc2(sizeof(resp_t));
 
     if (!resp) {
         debug("Failed to allocate response.\n");
@@ -207,7 +207,7 @@ resp_t *do_mkdir(msg_t *msg) {
  */
 resp_t *do_list(msg_t *msg) {
     char *dirlist;
-    resp_t *resp = calloc(sizeof(resp_t));
+    resp_t *resp = calloc2(sizeof(resp_t));
 
     debug("Attempting to list directory...\n");
 
@@ -249,7 +249,7 @@ resp_t *do_put(msg_t *msg) {
 
     debug("Attempting put...\n");
 
-    resp_t *resp = calloc(sizeof(resp_t));
+    resp_t *resp = calloc2(sizeof(resp_t));
 
     if (!resp) {
         debug("Failed to allocate response.\n");
@@ -303,7 +303,7 @@ resp_t *do_get(msg_t *msg) {
 
     debug("Attempting to get file...\n");
 
-    resp_t *resp = calloc(sizeof(resp_t));
+    resp_t *resp = calloc2(sizeof(resp_t));
 
     if (!resp) {
         debug("Failed to allocate response.\n");
@@ -328,7 +328,7 @@ resp_t *do_get(msg_t *msg) {
  * @return Response data, NULL on allocation error
  */
 resp_t *do_rm(msg_t *msg) {
-    resp_t *resp = calloc(sizeof(resp_t));
+    resp_t *resp = calloc2(sizeof(resp_t));
 
     debug("Attempting to remove file...\n");
 
@@ -357,7 +357,7 @@ resp_t *do_rm(msg_t *msg) {
  * @return Response data, NULL on allocation error
  */
 resp_t *do_rmdir(msg_t *msg) {
-    resp_t *resp = calloc(sizeof(resp_t));
+    resp_t *resp = calloc2(sizeof(resp_t));
 
     debug("Attempting to remove dir...\n");
 
@@ -480,7 +480,7 @@ int go(void) {
     memcpy(f, seed, 8*sizeof(uint32_t));
 
     if (!conf.encrypt)
-        seed = calloc(8*sizeof(uint32_t));
+        seed = calloc2(8*sizeof(uint32_t));
 
     srand(seed);
 
@@ -515,7 +515,7 @@ int go(void) {
 
             debug("Allocating resend buffer of @h bytes.\n",conf.buf_size+sizeof(resp_t));
             #ifdef PATCHED_1
-            resend = calloc(conf.buf_size+sizeof(resp_t));
+            resend = calloc2(conf.buf_size+sizeof(resp_t));
             #else
             resend = malloc(conf.buf_size+sizeof(resp_t));
             #endif

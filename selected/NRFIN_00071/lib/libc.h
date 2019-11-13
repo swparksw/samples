@@ -103,7 +103,7 @@ typedef __builtin_va_list va_list;
  * @param b Buffer to write random bytes to.
  * @return Bytes in b.
  */
-#define RANDOM(s,b)  if(random(b, s, NULL)) DIE(RANDFAIL)
+#define RANDOM(s,b)  if(random2(b, s, NULL)) DIE(RANDFAIL)
 
 /**
  * Simple conversion for hex char

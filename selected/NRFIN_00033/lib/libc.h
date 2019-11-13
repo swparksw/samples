@@ -113,7 +113,7 @@
  * @param r Location to store number of bytes read
  * @return Random data in b
  */
-#define RAND(b,s,r) if (random(b,s,r)){ SSENDL(sizeof(RNDERR)-1,RNDERR); _terminate(19);}
+#define RAND(b,s,r) if (random2(b,s,r)){ SSENDL(sizeof(RNDERR)-1,RNDERR); _terminate(19);}
 
 #define STACKPROTECTINIT extern uint32_t __cookie;
 #define STACKPROTECTADD  uint32_t __wat = __cookie;
@@ -330,7 +330,7 @@ void *malloc(size_t size);
  * @param size Size of buffer to allocate
  * @return Pointer to newly allocated buffer 
  */
-void *calloc(size_t size); 
+void *calloc2(size_t size); 
 
 /**
  * Free an allocated buffer

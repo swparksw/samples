@@ -409,77 +409,8 @@ void checkheap() {
     }
 }
 
-void *malloc(size_t size) {
-    /*
-     * A very stupid malloc implementation, meant to be simple.
-     * Keeps a list of allocated and freed chunks
-     * Alloc walks list of freed chunks to see if any are large enough
-     * If not, it allocates space large enough to store
-     * Oh, and we never actually free pages. It's quality software.
-     *
-     */
-    if (!heapinit_done) 
-        heapinit();
 
-    if (size == 0)
-        return NULL;
-
-    heap_chunk_t *chunk = freed;
-    //need space for inline metadata
-    size += sizeof(heap_chunk_t);
-
-    //walk freed list to see if we can find match
-    while (chunk->size < size && chunk->next != freed) {
-        chunk = chunk->next;
-    }
-
-    if (chunk->size >= size) {
-        //found a match, remove from freed list, add to allocated list, and return
-        //SSSENDL("found free chunk");
-        remove(chunk);
-        insert(allocated,chunk);
-        return ((uint8_t*)chunk)+sizeof(heap_chunk_t);
-    }
-
-    //see if free space in last allocated page is enough
-    if (size <= curleft) {
-        //SSSENDL("had enough left in current page");
-        chunk = (heap_chunk_t*)lastpage;
-        chunk->size = size;
-        lastpage += size;
-        curleft -= size;
-        insert(allocated,chunk);
-        return ((uint8_t*)chunk)+sizeof(heap_chunk_t);
-    }
-
-    //need to allocate new page
-
-    //SSSENDL("allocating new page");
-    //first add the remaining page to our freed list as a lazy hack
-    //if there's not enough left, we just let it leak
-    if (curleft > sizeof(heap_chunk_t)) {
-        //SSSENDL("adding remainder to free list");
-        chunk = (heap_chunk_t*)lastpage;
-        chunk->size = curleft;
-        insert(freed,chunk);
-    }
-
-    if (allocate(size,0,(void**)&chunk) != 0)
-        return NULL;
-
-    chunk->size = size;
-    insert(allocated,chunk);
-
-    lastpage = ((uint8_t*)chunk)+size;
-    //this is bad.
-    if ((size & 0xfff) != 0)
-        curleft = PAGE_SIZE-(size&(PAGE_SIZE-1));
-    else
-        curleft = 0;
-    return ((uint8_t*)chunk)+sizeof(heap_chunk_t);
-}
-
-void *calloc(size_t size) {
+void *calloc2(size_t size) {
     void *ptr;
 
     if (!(ptr = malloc(size)))
@@ -487,26 +418,6 @@ void *calloc(size_t size) {
 
     memset(ptr,'\0',size);
     return ptr;
-}
-
-void free(void *p) {
-    /*
-     * A very stupid free for a very stupid malloc
-     * Simply moves pointer from allocated to free list
-     * With no checking of anything, obviously
-     *
-     */
-    if (!p)
-        return;
-
-    heap_chunk_t *chunk = (heap_chunk_t*)((uint8_t*)p - sizeof(heap_chunk_t));
-
-    //fix allocated list
-    remove(chunk);
-
-    //add chunk to the freed list
-    insert(freed,chunk);
-    return;
 }
 
 void __stack_cookie_init() {
