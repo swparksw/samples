@@ -189,6 +189,7 @@ fail:
 
 int main()
 {
+prog_init();
   user_t *cur_user = NULL;
   user_list_t users = NULL;
   msg_queue messages = NULL;

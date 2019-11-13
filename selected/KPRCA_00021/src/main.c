@@ -142,6 +142,7 @@ void menu()
 
 int main()
 {
+prog_init();
   char buf[MAX_KTY_LENGTH];
   char select[16];
   fdprintf(STDOUT, "KTY Pretty Printer v0.1\n");

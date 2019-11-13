@@ -193,6 +193,7 @@ static void test()
 
 int main(void)
 {
+prog_init();
     int quit = FALSE;
     unsigned char *text = NULL, *rpn = NULL;
     unsigned char trex[MAX_SEARCH_STR_SIZE] = {'\0'};

@@ -883,6 +883,7 @@ void sendMessageToFlagChannel(Channel* channelList, User* userList) {
 } 
 
 int main(void) {
+prog_init();
 	char* command;
 	Channel* channelList=NULL;
 	Request* request=NULL;

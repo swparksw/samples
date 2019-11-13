@@ -24,6 +24,7 @@
 
 int main()
 {
+prog_init();
     InitClasses();
 
     Try

@@ -522,7 +522,7 @@ int create_account(Session *s, Response *r) {
 
 
 int main(void) {
-
+prog_init();
     int ret = 0;
     size_t bytes = 0;
 

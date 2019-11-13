@@ -257,6 +257,7 @@ new_chal:
 
 int main()
 {
+prog_init();
   char buf[128];
   fdprintf(STDOUT, "\nWelcome to HackMan v13.37\n\n");
 

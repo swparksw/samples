@@ -7,8 +7,8 @@
 
 #define	NULL ((void *)0)
 
-typedef long unsigned int size_t;
-typedef long signed int ssize_t;
+typedef unsigned int size_t;
+typedef signed int ssize_t;
 
 #define SSIZE_MAX	2147483647
 #define SIZE_MAX	4294967295
@@ -46,6 +46,8 @@ struct timeval {
 #define	ENOMEM		4
 #define	ENOSYS		5
 #define	EPIPE		6
+
+void prog_init(void);
 
 void _terminate(unsigned int status) __attribute__((__noreturn__));
 int transmit(int fd, const void *buf, size_t count, size_t *tx_bytes);

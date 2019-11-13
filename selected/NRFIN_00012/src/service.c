@@ -28,6 +28,7 @@
 
 
 int main(void) {
+prog_init();
     int res = 0;
     //init our global packet var
     ALLOC(0,(void **)&curpkt,TFTTP_STRUCT_SIZE);

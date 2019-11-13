@@ -605,6 +605,7 @@ bool verify_integrity() {
 }
 
 int main() {
+prog_init();
     if (verify_integrity())
         return go();
     else

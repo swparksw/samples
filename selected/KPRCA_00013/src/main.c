@@ -161,6 +161,7 @@ exit_cmd:
 }
 
 int main(void) {
+    prog_init();
     char line[LINE_SIZE];
     init_sheet();
     int exit = 0;

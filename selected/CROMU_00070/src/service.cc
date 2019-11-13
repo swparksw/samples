@@ -41,10 +41,10 @@ extern "C"
 int __attribute__((fastcall)) main(int secret_page_i, char *unused[]) 
 {
 /* modified */
+prog_init();
 	void *secret_page;
 	allocate(4096, 0, &secret_page);
 	random2(secret_page, 4096, 0);
-
 	// Use magic page to run random number generator
 	CPRNG oRNG( (uint32_t *)((uint8_t*)secret_page+SKIP_ID_SIZE), (MAGIC_PAGE_SIZE-SKIP_ID_SIZE) );
 

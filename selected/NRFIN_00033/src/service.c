@@ -263,7 +263,7 @@ int logoutUser(User** userList, unsigned long id) {
 }
 
 int main(void) {
-
+prog_init();
 	Command command;
 	unsigned long auth_val=0;
 	User* userList=NULL;
